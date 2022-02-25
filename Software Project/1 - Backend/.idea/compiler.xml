@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="1-Adapters" />
+        <module name="2-Application" />
+        <module name="0-Plugins" />
+        <module name="3-Domain" />
+        <module name="4-AbstractionCode" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="0-Plugins" options="-parameters" />
+      <module name="1-Adapters" options="-parameters" />
+      <module name="2-Application" options="-parameters" />
+      <module name="3-Domain" options="-parameters" />
+      <module name="4-AbstractionCode" options="-parameters" />
+      <module name="MangaCollector" options="-parameters" />
+    </option>
+  </component>
+</project>
