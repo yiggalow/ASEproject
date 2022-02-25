@@ -1,5 +1,6 @@
-package de.dhbw.ase.mangacollector;
+package de.dhbw.ase.mangacollector.domain.publisher;
 
+import de.dhbw.ase.mangacollector.domain.country.Country;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

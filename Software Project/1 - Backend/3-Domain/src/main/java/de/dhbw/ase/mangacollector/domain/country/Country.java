@@ -1,4 +1,4 @@
-package de.dhbw.ase.mangacollector;
+package de.dhbw.ase.mangacollector.domain.country;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,17 +12,17 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @RequiredArgsConstructor
-@Table(name = "Author")
-public class Author {
+@Table(name = "Country")
+public class Country {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="author_id")
+    @Column(name="country_id")
     private Integer id;
 
     @Column(name="name")
     private String name;
 
-    public Author(String name) {
-        this.name = name;
+    public Country(String country) {
+        this.name = country;
     }
 }

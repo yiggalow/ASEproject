@@ -1,6 +1,10 @@
-package de.dhbw.ase.mangacollector;
+package de.dhbw.ase.mangacollector.domain.manga;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import de.dhbw.ase.mangacollector.domain.publisher.Publisher;
+import de.dhbw.ase.mangacollector.domain.author.Author;
+import de.dhbw.ase.mangacollector.domain.episode.Episode;
+import de.dhbw.ase.mangacollector.domain.genre.Genre;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
