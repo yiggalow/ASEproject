@@ -1,7 +1,5 @@
 package de.dhbw.ase.plugins.rest;
 
-import de.dhbw.ase.mangacollector.author.AuthorApplicationService;
-import de.dhbw.ase.mangacollector.domain.author.Author;
 import de.dhbw.ase.mangacollector.domain.episode.Episode;
 import de.dhbw.ase.mangacollector.episode.EpisodeApplicationService;
 import lombok.RequiredArgsConstructor;

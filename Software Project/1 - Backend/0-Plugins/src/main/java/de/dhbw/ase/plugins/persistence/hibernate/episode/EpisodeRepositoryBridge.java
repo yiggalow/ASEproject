@@ -1,6 +1,5 @@
 package de.dhbw.ase.plugins.persistence.hibernate.episode;
 
-import de.dhbw.ase.mangacollector.domain.author.Author;
 import de.dhbw.ase.mangacollector.domain.episode.Episode;
 import de.dhbw.ase.mangacollector.domain.episode.EpisodeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
