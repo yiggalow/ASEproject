@@ -15,5 +15,5 @@ public class AuthorApplicationService {
         this.authorRepository = authorRepository;
     }
 
-    public List<Author> getBottles() {         return authorRepository.findAll();     }
+    public List<Author> getAuthors() {         return authorRepository.findAll();     }
 }
