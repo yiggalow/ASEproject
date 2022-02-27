@@ -5,5 +5,5 @@ import java.util.List;
 public interface PublisherRepository {
     List<Publisher> findAll();
 
-    Publisher save(Publisher publisher)
+    Publisher save(Publisher publisher);
 }
