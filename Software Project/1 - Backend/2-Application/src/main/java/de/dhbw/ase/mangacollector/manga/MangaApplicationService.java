@@ -10,10 +10,21 @@ import java.util.List;
 @Service
 public class MangaApplicationService {
     private MangaRepository mangaRepository;
+
     @Autowired
-    public MangaApplicationService(MangaRepository mangaRepository){
+    public MangaApplicationService(MangaRepository mangaRepository) {
         this.mangaRepository = mangaRepository;
     }
 
-    public List<Manga> getMangas() {         return mangaRepository.findAll();     }
+    public List<Manga> getMangas() {
+        return mangaRepository.findAll();
+    }
+
+    public List<Manga> findAllByGenre_Id(int id) {
+        return mangaRepository.findAllByGenre_Id(id);
+    }
+
+    public void delteManga(int id) {
+        mangaRepository.deleteById(id);
+    }
 }

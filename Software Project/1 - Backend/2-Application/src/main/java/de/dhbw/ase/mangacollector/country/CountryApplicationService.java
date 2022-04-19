@@ -16,4 +16,5 @@ public class CountryApplicationService {
     }
 
     public List<Country> getCountries() {         return countryRepository.findAll();     }
+    public void deleteCountry(int id) {countryRepository.deleteById(id); }
 }

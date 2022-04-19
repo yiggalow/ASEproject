@@ -24,4 +24,9 @@ public class CountryRepositoryBridge implements CountryRepository {
     public Country save(Country country){
         return springDataCountryRepository.save(country);
     }
+
+    @Override
+    public void deleteById(int countryId) {
+        springDataCountryRepository.deleteById(countryId);
+    }
 }

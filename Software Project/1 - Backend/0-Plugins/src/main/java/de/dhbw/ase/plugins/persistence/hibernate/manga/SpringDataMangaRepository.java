@@ -4,6 +4,7 @@ import de.dhbw.ase.mangacollector.domain.manga.Manga;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Transactional
 public interface SpringDataMangaRepository extends JpaRepository<Manga, Integer> {
@@ -12,10 +13,10 @@ public interface SpringDataMangaRepository extends JpaRepository<Manga, Integer>
     /** CREATE **/
 
     /** READ **/
-
+    List<Manga> findAllByGenre_Id(int genreId);
     /** UPDATE **/
 
     /** DELETE **/
-
+    void deleteById(int id);
 }
 

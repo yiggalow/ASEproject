@@ -24,4 +24,14 @@ public class MangaRepositoryBridge implements MangaRepository {
     public Manga save(Manga manga) {
         return springDataMangaRepository.save(manga);
     }
+
+    @Override
+    public void deleteById(int id) {
+        springDataMangaRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Manga> findAllByGenre_Id(int genreId) {
+        return springDataMangaRepository.findAllByGenre_Id(genreId);
+    }
 }

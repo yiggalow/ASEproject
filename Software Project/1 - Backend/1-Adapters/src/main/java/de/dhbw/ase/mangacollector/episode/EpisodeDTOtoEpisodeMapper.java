@@ -10,20 +10,12 @@ import java.util.function.Function;
 @Component
 public class EpisodeDTOtoEpisodeMapper  implements Function<EpisodeDTO, Episode> {
 
-    private MangaDTOtoMangaMapper mangaDTOtoMangaMapper;
-
-    @Autowired
-    public EpisodeDTOtoEpisodeMapper(MangaDTOtoMangaMapper mangaDTOtoMangaMapper) {
-        this.mangaDTOtoMangaMapper = mangaDTOtoMangaMapper;
-    }
-
-
     @Override
     public Episode apply(EpisodeDTO episodeDTO) {
         return map(episodeDTO);
     }
 
     private Episode map(EpisodeDTO episodeDTO) {
-        return new Episode(episodeDTO.getId(), episodeDTO.getTitle(), mangaDTOtoMangaMapper.apply(episodeDTO.getManga()));
+        return new Episode(episodeDTO.getId(), episodeDTO.getTitle(), null);
     }
 }

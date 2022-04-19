@@ -6,4 +6,9 @@ public interface MangaRepository {
     List<Manga> findAll();
 
     Manga save(Manga manga);
+
+    void deleteById(int id);
+
+    List<Manga> findAllByGenre_Id(int genreId);
+
 }

@@ -15,6 +15,7 @@ public interface SpringDataCountryRepository extends JpaRepository<Country, Inte
     /** UPDATE **/
 
     /** DELETE **/
+    void deleteById(long id);
 
 }
 
