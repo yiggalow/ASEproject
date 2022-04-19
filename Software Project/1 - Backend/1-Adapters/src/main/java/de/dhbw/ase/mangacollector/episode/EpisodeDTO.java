@@ -3,14 +3,12 @@ package de.dhbw.ase.mangacollector.episode;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import de.dhbw.ase.mangacollector.manga.MangaDTO;
 
+import com.fasterxml.jackson.annotation.*;
+import de.dhbw.ase.mangacollector.manga.MangaDTO;
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "id",
@@ -25,6 +23,7 @@ public class EpisodeDTO {
     @JsonProperty("title")
     private String title;
     @JsonProperty("manga")
+    @JsonIgnoreProperties
     private MangaDTO manga;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();

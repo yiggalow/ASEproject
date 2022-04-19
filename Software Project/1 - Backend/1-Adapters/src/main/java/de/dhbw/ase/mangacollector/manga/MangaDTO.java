@@ -14,7 +14,9 @@ import de.dhbw.ase.mangacollector.author.AuthorDTO;
 import de.dhbw.ase.mangacollector.episode.EpisodeDTO;
 import de.dhbw.ase.mangacollector.genre.GenreDTO;
 import de.dhbw.ase.mangacollector.publisher.PublisherDTO;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "id",
