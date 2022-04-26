@@ -1,6 +1,7 @@
 package de.dhbw.ase.mangacollector.domain.manga;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import de.dhbw.ase.mangacollector.domain.rating.Rating;
 import de.dhbw.ase.mangacollector.domain.publisher.Publisher;
 import de.dhbw.ase.mangacollector.domain.author.Author;
 import de.dhbw.ase.mangacollector.domain.episode.Episode;
@@ -44,6 +45,10 @@ public class Manga {
     @OneToMany (cascade = CascadeType.PERSIST, mappedBy="manga")
     @JsonIgnoreProperties("manga")
     private List<Episode> episodeList = new LinkedList<>();
+
+    @OneToMany (cascade = CascadeType.PERSIST, mappedBy="manga")
+    @JsonIgnoreProperties("manga")
+    private List<Rating> ratingList = new LinkedList<>();
 
     public Manga(String name, Publisher publisher, Author author, Genre genre) {
         this.name = name;
