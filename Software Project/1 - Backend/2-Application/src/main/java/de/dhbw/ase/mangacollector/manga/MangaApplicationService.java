@@ -2,14 +2,12 @@ package de.dhbw.ase.mangacollector.manga;
 
 import java.util.Optional;
 import de.dhbw.ase.mangacollector.domain.author.AuthorRepository;
-import de.dhbw.ase.mangacollector.domain.country.CountryRepository;
 import de.dhbw.ase.mangacollector.domain.episode.Episode;
 import de.dhbw.ase.mangacollector.domain.episode.EpisodeRepository;
 import de.dhbw.ase.mangacollector.domain.genre.GenreRepository;
 import de.dhbw.ase.mangacollector.domain.manga.Manga;
 import de.dhbw.ase.mangacollector.domain.publisher.Publisher;
 import de.dhbw.ase.mangacollector.domain.genre.Genre;
-import de.dhbw.ase.mangacollector.domain.country.Country;
 import de.dhbw.ase.mangacollector.domain.author.Author;
 import de.dhbw.ase.mangacollector.domain.manga.MangaRepository;
 import de.dhbw.ase.mangacollector.domain.publisher.PublisherRepository;
@@ -57,7 +55,7 @@ public class MangaApplicationService {
                 episodeRepository.save(episodeToCreate);
             }
             for(Rating rating : manga.getRatingList()){
-                Rating ratingToCreate = new Rating(rating.getRater(),mangaToCreate, rating.getRating());
+                Rating ratingToCreate = new Rating(rating.getRater(),mangaToCreate, rating.getRatingValue());
                 ratingRepository.save(ratingToCreate);
             }
             return mangaToCreate;

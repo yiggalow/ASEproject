@@ -14,7 +14,7 @@ public class RatingToRatingDTOMapper implements Function<Rating, RatingDTO> {
     }
 
     private RatingDTO map(Rating rating) {
-        return new RatingDTO(rating.getId(), rating.getRater(),rating.getRating(),null);
+        return new RatingDTO(rating.getId(), rating.getRater(),rating.getRatingValue(),null);
     }
 
 }

@@ -26,7 +26,7 @@ public class RatingApplicationService {
     public Rating createRating(Integer mangaID,Rating rating) throws ClassNotFoundException {
         Optional<Manga> foundManga = mangaRepository.findById(mangaID);
         if(foundManga.isPresent()){
-            Rating toCreate = new Rating(rating.getRater(), foundManga.get(), rating.getRating());
+            Rating toCreate = new Rating(rating.getRater(), foundManga.get(), rating.getRatingValue());
             ratingRepository.save(toCreate);
             return toCreate;
         }

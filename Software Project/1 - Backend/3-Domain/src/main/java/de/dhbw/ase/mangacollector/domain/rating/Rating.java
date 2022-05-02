@@ -25,22 +25,22 @@ public class Rating {
     private String rater;
 
     @Column(name="rating")
-    private Integer rating;
+    private Integer ratingValue;
 
     @ManyToOne
     @JoinColumn (name= "manga")
     @JsonIgnoreProperties
     private Manga manga;
 
-    public Rating(Integer id,String rater,Integer rating) {
+    public Rating(Integer id,String rater,Integer ratingValue) {
         this.id = id;
         this.rater = rater;
-        this.rating = rating;
+        this.ratingValue = ratingValue;
     }
 
-    public Rating(String rater, Manga manga, Integer rating) {
+    public Rating(String rater, Manga manga, Integer ratingValue) {
         this.rater = rater;
         this.manga = manga;
-        this.rating = rating;
+        this.ratingValue = ratingValue;
     }
 }
