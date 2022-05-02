@@ -1,13 +1,9 @@
 package de.dhbw.ase.mangacollector.manga;
 
-import de.dhbw.ase.mangacollector.author.AuthorDTOtoAuthorMapper;
 import de.dhbw.ase.mangacollector.author.AuthorToAuthorDTOMapper;
 import de.dhbw.ase.mangacollector.domain.manga.Manga;
-import de.dhbw.ase.mangacollector.episode.EpisodeDTOtoEpisodeMapper;
 import de.dhbw.ase.mangacollector.episode.EpisodeToEpisodeDTOMapper;
-import de.dhbw.ase.mangacollector.genre.GenreDTOtoGenreMapper;
 import de.dhbw.ase.mangacollector.genre.GenreToGenreDTOMapper;
-import de.dhbw.ase.mangacollector.publisher.PublisherDTOtoPublisherMapper;
 import de.dhbw.ase.mangacollector.publisher.PublisherToPublisherDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
