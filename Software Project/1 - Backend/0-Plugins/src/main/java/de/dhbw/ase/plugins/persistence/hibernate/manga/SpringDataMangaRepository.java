@@ -13,7 +13,8 @@ public interface SpringDataMangaRepository extends JpaRepository<Manga, Integer>
     /** CREATE **/
 
     /** READ **/
-    List<Manga> findAllByGenre_Id(int genreId);
+    List<Manga> findAllByGenre_Id(Integer genreId);
+    boolean existsById(Integer mangaId);
     /** UPDATE **/
 
     /** DELETE **/

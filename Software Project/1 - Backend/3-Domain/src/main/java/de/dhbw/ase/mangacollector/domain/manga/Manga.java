@@ -56,4 +56,10 @@ public class Manga {
         this.author = author;
         this.genre = genre;
     }
+    public void addEpisode(Episode episode) {
+        episodeList.add(episode);
+    }
+    public void addRating(Rating rating){
+        ratingList.add(rating);
+    }
 }

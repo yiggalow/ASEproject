@@ -3,6 +3,7 @@ package de.dhbw.ase.plugins.rest;
 import de.dhbw.ase.mangacollector.domain.manga.Manga;
 import de.dhbw.ase.mangacollector.manga.MangaApplicationService;
 import de.dhbw.ase.mangacollector.manga.MangaDTO;
+import de.dhbw.ase.mangacollector.manga.MangaDTOtoMangaMapper;
 import de.dhbw.ase.mangacollector.manga.MangaToMangaDTOMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,25 @@ import java.util.stream.Collectors;
 public class MangaController {
     private MangaApplicationService mangaApplicationService;
     private MangaToMangaDTOMapper mangaToMangaDTOMapper;
+    private MangaDTOtoMangaMapper mangaDTOtoMangaMapper;
 
     @Autowired
-    public MangaController(MangaApplicationService mangaApplicationService, MangaToMangaDTOMapper mangaToMangaDTOMapper) {
+    public MangaController(MangaApplicationService mangaApplicationService, MangaToMangaDTOMapper mangaToMangaDTOMapper,MangaDTOtoMangaMapper mangaDTOtoMangaMapper) {
+        this.mangaDTOtoMangaMapper = mangaDTOtoMangaMapper;
         this.mangaApplicationService = mangaApplicationService;
         this.mangaToMangaDTOMapper = mangaToMangaDTOMapper;
     }
+
+    @PostMapping(value = "")
+    public MangaDTO createManga(@RequestBody MangaDTO mangaDTO) throws ClassNotFoundException {
+        return mangaToMangaDTOMapper.apply(mangaApplicationService.createManga(mangaDTOtoMangaMapper.apply(mangaDTO)));
+    }
+
+    @PutMapping(value = "")
+    public MangaDTO updateManga(@RequestBody MangaDTO mangaDTO)throws ClassNotFoundException {
+        return mangaToMangaDTOMapper.apply(mangaApplicationService.updateManga(mangaDTOtoMangaMapper.apply(mangaDTO)));
+    }
+
 
     @GetMapping("")
     public List<MangaDTO> getAllMangas() {

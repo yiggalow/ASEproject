@@ -5,6 +5,7 @@ import de.dhbw.ase.mangacollector.domain.manga.Manga;
 import de.dhbw.ase.mangacollector.episode.EpisodeToEpisodeDTOMapper;
 import de.dhbw.ase.mangacollector.genre.GenreToGenreDTOMapper;
 import de.dhbw.ase.mangacollector.publisher.PublisherToPublisherDTOMapper;
+import de.dhbw.ase.mangacollector.rating.RatingToRatingDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,15 +19,20 @@ public class MangaToMangaDTOMapper  implements Function<Manga, MangaDTO> {
     private AuthorToAuthorDTOMapper authorToAuthorDTOMapper;
     private PublisherToPublisherDTOMapper publisherToPublisherDTOMapper;
     private EpisodeToEpisodeDTOMapper episodeToEpisodeDTOMapper;
+    private RatingToRatingDTOMapper ratingToRatingDTOMapper;
+
+
     @Autowired
     public MangaToMangaDTOMapper(GenreToGenreDTOMapper genreToGenreDTOMapper,
                                  AuthorToAuthorDTOMapper authorToAuthorDTOMapper,
                                  PublisherToPublisherDTOMapper publisherToPublisherDTOMapper,
-                                 EpisodeToEpisodeDTOMapper episodeToEpisodeDTOMapper) {
+                                 EpisodeToEpisodeDTOMapper episodeToEpisodeDTOMapper,
+                                 RatingToRatingDTOMapper ratingToRatingDTOMapper) {
         this.genreToGenreDTOMapper = genreToGenreDTOMapper;
         this.authorToAuthorDTOMapper = authorToAuthorDTOMapper;
         this.publisherToPublisherDTOMapper = publisherToPublisherDTOMapper;
         this.episodeToEpisodeDTOMapper = episodeToEpisodeDTOMapper;
+        this.ratingToRatingDTOMapper = ratingToRatingDTOMapper;
     }
 
 
@@ -42,6 +48,7 @@ public class MangaToMangaDTOMapper  implements Function<Manga, MangaDTO> {
                 authorToAuthorDTOMapper.apply(manga.getAuthor()),
                 genreToGenreDTOMapper.apply(manga.getGenre()),
                 manga.getEpisodeList().stream().map(episodeToEpisodeDTOMapper).collect(Collectors.toList()),
+                manga.getRatingList().stream().map(ratingToRatingDTOMapper).collect(Collectors.toList()),
                 null
         );
     }

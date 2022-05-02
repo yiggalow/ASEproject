@@ -35,4 +35,14 @@ public class MangaRepositoryBridge implements MangaRepository {
     public List<Manga> findAllByGenre_Id(int genreId) {
         return springDataMangaRepository.findAllByGenre_Id(genreId);
     }
+
+    @Override
+    public boolean existsById(int mangaId){
+        return springDataMangaRepository.existsById(mangaId);
+    }
+
+    @Override
+    public Optional<Manga> findById(int mangaId){
+        return springDataMangaRepository.findById(mangaId);
+    }
 }

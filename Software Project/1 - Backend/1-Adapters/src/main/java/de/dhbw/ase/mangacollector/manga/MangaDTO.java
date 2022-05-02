@@ -14,6 +14,7 @@ import de.dhbw.ase.mangacollector.author.AuthorDTO;
 import de.dhbw.ase.mangacollector.episode.EpisodeDTO;
 import de.dhbw.ase.mangacollector.genre.GenreDTO;
 import de.dhbw.ase.mangacollector.publisher.PublisherDTO;
+import de.dhbw.ase.mangacollector.rating.RatingDTO;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -24,7 +25,8 @@ import lombok.AllArgsConstructor;
         "publisher",
         "author",
         "genre",
-        "episodeList"
+        "episodeList",
+        "ratingList"
 })
 @Generated("jsonschema2pojo")
 public class MangaDTO {
@@ -41,6 +43,8 @@ public class MangaDTO {
     private GenreDTO genre;
     @JsonProperty("episodeList")
     private List<EpisodeDTO> episodeList = null;
+    @JsonProperty("ratingList")
+    private List<RatingDTO> ratingList = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -102,6 +106,16 @@ public class MangaDTO {
     @JsonProperty("episodeList")
     public void setEpisodeList(List<EpisodeDTO> episodeList) {
         this.episodeList = episodeList;
+    }
+
+    @JsonProperty("ratingList")
+    public List<RatingDTO> getRatingList() {
+        return ratingList;
+    }
+
+    @JsonProperty("ratingList")
+    public void setRatingList(List<RatingDTO> ratingList) {
+        this.ratingList = ratingList;
     }
 
     @JsonAnyGetter

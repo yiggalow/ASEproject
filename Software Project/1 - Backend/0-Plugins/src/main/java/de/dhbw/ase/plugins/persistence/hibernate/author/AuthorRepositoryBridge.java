@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class AuthorRepositoryBridge implements AuthorRepository {
@@ -23,5 +24,15 @@ public class AuthorRepositoryBridge implements AuthorRepository {
     @Override
     public Author save(Author author) {
          return springDataAuthorRepository.save(author);
+    }
+
+    @Override
+    public Optional<Author> findById(Integer authodId) {
+        return springDataAuthorRepository.findById(authodId);
+    }
+
+    @Override
+    public void deleteById(Integer authorId){
+        springDataAuthorRepository.deleteById(authorId);
     }
 }

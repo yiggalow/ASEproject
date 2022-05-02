@@ -25,4 +25,11 @@ public class Author {
     public Author(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString(){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Name : "+name);
+        return stringBuilder.toString();
+    }
 }
