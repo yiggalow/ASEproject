@@ -1,16 +1,31 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Descr:       Vorlage für Berichte der DHBW-Karlsruhe
-%% Author:      Prof. Dr. Jürgen Vollmer, vollmer@dhbw-karlsruhe.de
-%% Modified :	Nico Holzhäuser, TINF19B4
-%% -*- coding: utf-8 -*-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \chapter{Domain Driven Design}
+Das Konzept der Ubiquitous Language ist einer der Grundpfeiler im Domain Driven Design: In der Kommunikation mit dem Kunden und im gesamten Quellcode des Projekts sollen hierbei einheitliche Begriffe verwendet werden.
 
-\section{Analyse der Ubiquitous Language}
+    \section{Analyse der Ubiquitous Language}
+    Ein Manga besitzt einen Namen und einen Publisher, wobei ein Publisher eine Vielzahl an Mangas herausbringen kann. Zudem besitzt ein Manga einen Author und ein Genre, wobei sowohl der Author als auch das Genre von mehreren Mangas verwendet werden kann. Ein Manga hat zudem eine Liste (episodeList), in welcher mehrere Episoden sein können. Diese Episoden besitzen außerdem eine ratingList, welche Bewertungen für eine spezifische Episode speichert.
+    
+    \section{Analyse und Begründung der verwendeten Muster}
+    Im nächsten Schritt sollen die verwendeten Muster und deren Nutzen im Projekt erläutert werden.
+    
+        \subsection{Value Objects}
+        Das Value Object ist ein in der Softwareentwicklung eingesetztes Entwurfsmuster. Wertobjekte sind unveränderbare Objekte, die einen speziellen Wert repräsentieren. Soll der Wert geändert werden, so muss ein neues Objekt generiert werden. Sei sind zudem nur über die Werte ihrer Attribute definiert und besitzen keine eigene Identität. Zwei Wertobjekte sind identisch, wenn alle Werte ihrer Attribute identisch sind.
+        
+        \subsection{Entities}
+        Entities sind die Grundobjekte, welche durch ihre eigene Identität definiert werden und nicht durch ihre Attribute. In diesem Projekt sind dies die folgenden Domainobjekte:
+        \begin{itemize}
+            \item Country 
+            \item Manga
+            \item Publisher
+            \item Epiosde
+            \item Author
+            \item Rating
+        \end{itemize}
+        
+        \subsection{Aggregates}
+        In diesem Objekt sind keine Aggregates vorhanden, da keine Entitätsgruppen gebildet werden müssen. Im Normalfall werden in Aggregates Entitäten in einer logischen Gruppe zusammengefasst.
 
-\section{Analyse und Begründung der verwendeten Muster}
-
-\subsection{Analyse}
-
-\subsection{Begründung}
+        \subsection{Repositories}
+        Die Repositories dienen als Schnittstelle zur Persistierungslogik. Hierbei können die Entitäten mit Hilfe dieser Logik persistiert oder aus einer persistierten Zustand zurück in die Anwendung geladen werden.
+        
+        \subsection{Application Services}
+        Die Application Services werden verwendet, da die Use-Cases über den Bereich einer einzelnen Entität hinausgehen. Somit wurden diese Operationen in bestimmte Appliciation Services ausgelagert.

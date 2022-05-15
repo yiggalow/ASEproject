@@ -1,14 +1,20 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Descr:       Vorlage für Berichte der DHBW-Karlsruhe
-%% Author:      Prof. Dr. Jürgen Vollmer, vollmer@dhbw-karlsruhe.de
-%% Modified :	Nico Holzhäuser, TINF19B4
-%% -*- coding: utf-8 -*-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \chapter{Entwurfsmuster}
+Im Projekt wurde das Bridge Pattern verwendet. Hierbei werden die Interfaces, welche in der Domain-Schicht entwickelt wurden mit Hilfe des Persistierungsformeworks Hibernate implementiert. Dabei wird die Implementierung von der Abstraktion entkoppelt. Dies hat zur Folge, dass die Persistierungslogik leicht ausgetauscht werden kann, wenn die neue Persistierungslogik die definierten Operationen besitzt.
 
-\section{Begründung des Einsatzes}
-
-\section{\ac{UML} Vorher}
-
-\section{\ac{UML} Nachher}
+    \section{UML Vorher}
+    \begin{figure}[h]
+    	\centering
+    	%\includegraphics[height=150px]{./appendix/filesONLYForAppendix/Images/lion.png}
+    	\shadowimage[height=50px]{./zfiles/Bilder/before.png}
+    	\caption{Vor der Benutzung des Bridge Patterns}
+    	\label{before}
+    \end{figure}
+    
+    \section{UML Nachher}
+    \begin{figure}[h]
+    	\centering
+    	%\includegraphics[height=150px]{./appendix/filesONLYForAppendix/Images/lion.png}
+    	\shadowimage[height=150px]{./zfiles/Bilder/after.png}
+    	\caption{Nach der Benutzung des Bridge Patterns}
+    	\label{before}
+    \end{figure}
