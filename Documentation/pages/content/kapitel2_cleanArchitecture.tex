@@ -1,14 +1,17 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Descr:       Vorlage für Berichte der DHBW-Karlsruhe
-%% Author:      Prof. Dr. Jürgen Vollmer, vollmer@dhbw-karlsruhe.de
-%% Modified :	Nico Holzhäuser, TINF19B4
-%% -*- coding: utf-8 -*-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \chapter{Clean Architecture}
+Die Clean-Architecture wurde für das Projekt gewählt, da hierbei die Modularität und die Kapselung der einzelnen Bestandteile der Anwendung im Mittelpunkt stehen. Die Clean Architecture wird mit Hilfe der Schichtenstruktur umgesetzt. Hierbei dürfen innere Schichten nie auf die äußeren Schichten zugreifen, sondern nur die äußeren auf die inneren.
 
 \section{Schichtenarchitektur}
+Die Schichtenarchitektur wurde mit Hilfe einzelner Maven Module umgesetzt und der Übersichtlichkeit halber getrennt. Außerdem können so die Abhängigkeiten pro Schicht festgelegt werden, sodass nicht alle Komponenten in jeder Schicht importiert werden müssen.
 
-\subsection{Planung}
-
-\subsection{Entscheidung anhand von Kriterien}
+    \subsection{Domain}
+    In der Domainschicht liegt das Modell der Anwendung aus den Entitäten. Diese Schicht bildet somit die organisationsweite Geschäftslogik ab. Außerdem werden hier die Abstraktionen für die Implementierung des Persistenzframeworks Hibernate gelegt.
+    
+    \subsection{Applikation}
+    In der Applikation-Schicht der Anwendung liegen die Use-Cases, welche mit Hilfe von Services implementiert wurden. Diese bilden Sachverhalte und Routinen ab, die über den Zuständigkeitsbereich einer einzelnen Entität hinausgehen. Hierbei wird außerdem die Logik für z.B. die API-Aufrufe definiert.
+    
+    \subsection{Adapters}
+    In dieser Schicht erfolgt die Umwandlung von serialisierten Objekten in die eigentlichen Domänenentities bzw. von Entität zu DTO. Diese Funktion wird mit Hilfe von sogenannten Mappern umgesetzt. Diese Schicht verarbeitet somit die entgegengenommenen Objekte und wandelt diese in ein Format, das für die Anwendung lesbar ist.
+    
+    \subsection{Plugins} 
+    In der letzten Schicht werden die Schnittstellen für die REST-Schnittstelle in Form von Controllern definiert. Außerdem können hier Frameworks importiert werden, die den Entwicklungsaufwand reduzieren oder bestimmte Funktionen implementieren. Im Projekt wurde hier die API-Test-Schnittstelle Swagger importiert, sowie Hibernate um mit der H2 Datenbank Entitäten auch über einen Neustart der Anwendung hinweg persistieren zu können.

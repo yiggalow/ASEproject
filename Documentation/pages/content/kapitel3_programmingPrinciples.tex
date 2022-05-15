@@ -1,20 +1,48 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Descr:       Vorlage für Berichte der DHBW-Karlsruhe
-%% Author:      Prof. Dr. Jürgen Vollmer, vollmer@dhbw-karlsruhe.de
-%% Modified :	Nico Holzhäuser, TINF19B4
-%% -*- coding: utf-8 -*-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \chapter{Programming Principles}
 
-\section{SOLID}
-\subsection{Analyse}
-\subsection{Begründung}
+\section{SOLID Prinzipien}
+Im folgenden Anbschnitt werden die SOLID-Prinzipien erläutert.
+\subsection{Single-Responsibility}
+Das Single-Responsibility-Prinzip besagt, dass eine Klasse nur eine Verantwortlichkeit haben soll. Dadurch wird der Code leichter verständlich und leichter wartbar, da er gezwungenermaßen modularer aufgebaut ist und dadurch leichter verständlich ist, was wo passiert. Dieses Prinzip wird in der gesamten Anwendung verwendet, zum Beispiel auch in den Services, die jeweils nur die Use-Cases für ein einzelnes Entity abbilden.
 
-\section{GRASP (insb. Kopplung/Kohäsion)}
-\subsection{Analyse}
-\subsection{Begründung}
+\subsection{Open-Closed-Principle}
+Nach dem Open-Closed-Prinzip soll eine Klasse offen für Erweiterungen, aber geschlossen gegenüber Modifikationen sein. Das Verhalten einer Klasse darf erweitert, aber nicht verändert werden. Dieses Prinzip hilft, Fehler in schon fertigen Codeteilen zu vermeiden. Wenn eine Erweiterung nur durch Änderungen innerhalb einer Klasse erreicht werden kann, ist die Gefahr sehr groß, dass durch die Änderung schon fertig implementierte Funktionen neue Fehler bekommen. Dieses Prinzip ist zum Beispiel durch die Verwendung von Interfaces für die Repositories befolgt. Diese garantieren, dass neue konkrete Implementierungen hinzugefügt werden können, ohne den bestehenden Code anpassen zu müssen.
+\subsection{Liskov'sche Substitution}
+Das Liskovsche Substitutionsprinzip fordert, dass abgeleitete Klassen immer anstelle ihrer Basisklasse einsetzbar sein müssen. Subtypen müssen sich so verhalten wie ihr Basistyp. Auch dieses Prinzip ist durch die Verwendung der Repository-Interfaces gegeben. Die konkreten Implementierungen der Repositories lassen sich austauschen, ohne die Funktionsweise des restlichen Code zu beeinflussen.
+\subsection{Interface-Segregation}
+Das Interface-Segregation-Prinzip besagt, dass ein Client nicht von den Funktionen eines Servers abhängig sein darf, die er gar nicht benötigt. Ein Interface darf demnach nur die Funktionen enthalten, die auch wirklich eng zusammengehören. Die Problematik ist, dass durch „fette“ Interfaces Kopplungen zwischen den ansonsten unabhängigen Clients entstehen. Das Prinzip wurde befolgt, indem die verschiedenen Repository-Interfaces nach Entity aufgeteilt sind und nur die Methoden vorgeben, die unbedingt benötigt und auch verwendet werden.
+\subsection{Dependency Inversion}
+Das Dependency-Inversion-Prinzip besagt, dass Klassen auf einem höheren Abstraktionslevel nicht von Klassen auf einem niedrigen Abstraktionslevel abhängig sein sollen. Dabei geht es nicht darum, die Abhängigkeiten einfach umzudrehen. Abhängigkeiten zwischen Klassen soll es nicht mehr geben; es sollen nur noch Abhängigkeiten zu Interfaces bestehen (beidseitig). Interfaces sollen nicht von Details abhängig sein, sondern Details von Interfaces. Auch dieses Prinzip wird durch die Repository-Interfaces befolgt.
 
+\section{GRASP}
+GRASP steht für \textit{General Responsibility Assignment Software Patterns} und enthält neun Prinzipien, die im Folgenden näher beschrieben werden.
+
+    \subsection{Information expert}
+    Dieses Prinzip besagt, dass zusammengehörige Informationen auch am gleichen Ort liegen und neue Aufgaben von der Klasse übernommen werden, die schon am meisten Wissen über die Aufgabe besitzt. Dies ist zum Beispiel in den Entities mittels Getter und Setter gegeben. Diese prüfen dabei selbst die Integrität der eigenen Attribute, da sie selbst am meisten darüber wissen.
+    
+    \subsection{Creator}
+    Das Creator-Prinzip besagt, dass neue Instanzen einer Klasse von derjenigen Klasse erzeugt werden sollten, die eng mit der Klasse zusammenarbeiten. Das Prinzip wird im Projekt nicht explizit befolgt, da nur an wenigen Stellen Objekte instanziiert werden, wodurch hier keine Unübersichtlichkeit besteht.
+
+    \subsection{Controller}
+    Controller sind in Form von REST-Controllern in den Plugins angesiedelt und werden dazu genutzt, um "Benutzereingaben"\ von der tatsächlichen REST-Schnittstelle zu abstrahieren.
+    
+    \subsection{Low coupling}
+    Hier sollen Abhängigkeiten zwischen verschiedenen Klassen möglichst gering gehalten werden. Dadurch ist der Code leichter anpassbar, wartbar und auch wiederverwendbar. Dies wird zum Beispiel durch die Repository-Interfaces erreicht. Durch diese bestehen keine Abhängigkeiten von den konkreten Implementierungen, sondern nur vom Interface.
+    
+    \subsection{High cohesion}
+    Eine Klasse soll nicht Verschiedene Aufgaben übernehmen, da dadurch die Komplexität steigen würde. Hat jede Klasse nur eine einzige fest definierte Aufgabe, wird der Code leichter lesbar und leichter wartbar. Zudem wird durch High Cohesion auch Low Coupling unterstützt. Das Prinzip der High Cohesion wird durch das ganze Projekt hindurch verwendet, indem Klassen möglichst kurz gehalten sind und dadurch nur genau eine Aufgabe erfüllen.
+    
+    \subsection{Polymorphism}
+    Das Prinzip des Polymorphismus besagt, dass eine Instanz einer Klasse durch Instanzen von Child-Klassen oder Instanzen von Klassen, die das gleiche Interface implementieren, ersetzbar sein müssen. Durch das Ersetzen darf der restliche Code nicht fehlerhaft werden. Dies ist zum Beispiel bei den Repository-Interfaces der Fall. Die Implementierungen auf der Plugin-Schicht können dabei gewechselt werden, ohne die restliche Anwendung zu beeinflussen.
+    
+    \subsection{Pure fabrication}
+    Pure Fabrication sind Klassen, die in der Problemdomäne nicht existieren. Dazu gehören zum Beispiel die DTOs in der Adapter-Schicht. Sie existieren nur in der Anwendung für geringere Kopplung und bessere Verwendbarkeit, nicht in der eigentlichen Domäne.
+    
+    \subsection{Indirection}
+    Indirection beschreibt, dass zwei Klassen nicht direkt voneinander abhängen, sondern nur über einen Vermittler. Dies ist zum Beispiel durch die Application Services gegeben, da der Rest der Anwendung dadurch nicht direkt mit dem Repo arbeitet.
+    
+    \subsection{Protected variations}
+    Durch Protected Variations wird bestehender Code vor Änderungen an anderem Code geschützt. Dies wird zum Beispiel durch Interfaces erreicht, da sie sicherstellen, dass sich die Schnittstelle (z.B. die Methodensignatur) nicht ändern dürfen.
+    
 \section{DRY}
-\subsection{Analyse}
-\subsection{Begründung}
+Das "Don't Repeat Yourself"\ Prinzip wird im ganzen Projekt befolgt, da Methoden kurz gehalten wurden. Zudem wurde wo immer möglich Teillogik in eigene Methoden extrahiert. Dadurch wird der Code wiederverwendbar und muss nicht kopiert werden. Dadurch müssen Änderungen nur an einer Stelle durchgeführt werden und der Code wird leichter lesbar und verständlich.
